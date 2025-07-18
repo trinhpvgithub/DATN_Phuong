@@ -1,8 +1,12 @@
-﻿using System;
+﻿using DATN_Phuong.ClassUtils;
+using MiniExcelLibs;
+using MiniExcelLibs.OpenXml;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,7 +39,27 @@ namespace DATN_Phuong.Forms
 
         private void btn_loaddata_Click(object sender, EventArgs e)
         {
-
+            var config = new OpenXmlConfiguration()
+            {
+                FillMergedCells = true
+            };
+            var a = MiniExcel.Query(txt_path.Text, sheetName: "Dam", configuration: config);
+            var b = new XulyEx(a.ToList());
+            var c = b.Dams;
+            foreach (var item in c)
+            {
+                string[] row = new string[]
+                {   "0",
+                    "0",
+                    item.MCA.M.ToString(),
+                    item.MCA.Q.ToString(),
+                    item.MCB.M.ToString(),
+                    item.MCB.Q.ToString(),
+                    item.MCC.M.ToString(),
+                    item.MCC.Q.ToString()
+                };
+                dgv_frames.Rows.Add(row);
+            }
         }
     }
 }

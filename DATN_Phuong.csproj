@@ -51,10 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassUtils\BeamData.cs" />
+    <Compile Include="ClassUtils\Dam.cs" />
     <Compile Include="ClassUtils\MACBT.cs" />
     <Compile Include="ClassUtils\MACTHEP.cs" />
     <Compile Include="ClassUtils\MatCat.cs" />
     <Compile Include="ClassUtils\TinhToan.cs" />
+    <Compile Include="ClassUtils\XulyEx.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
