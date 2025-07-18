@@ -169,6 +169,7 @@ namespace DATN_Phuong.Forms
 			this.cbb_macbtong.Size = new System.Drawing.Size(236, 24);
 			this.cbb_macbtong.TabIndex = 1;
 			this.cbb_macbtong.Text = "B25";
+			this.cbb_macbtong.SelectedIndexChanged += new System.EventHandler(this.cbb_macbtong_SelectedIndexChanged);
 			// 
 			// label4
 			// 
@@ -318,6 +319,7 @@ namespace DATN_Phuong.Forms
 			this.cbb_dai.Size = new System.Drawing.Size(236, 24);
 			this.cbb_dai.TabIndex = 10;
 			this.cbb_dai.Text = "CB240-T";
+			this.cbb_dai.SelectedIndexChanged += new System.EventHandler(this.cbb_dai_SelectedIndexChanged);
 			// 
 			// label18
 			// 
@@ -452,6 +454,7 @@ namespace DATN_Phuong.Forms
 			this.cbb_chu.Size = new System.Drawing.Size(236, 24);
 			this.cbb_chu.TabIndex = 10;
 			this.cbb_chu.Text = "CB300-V";
+			this.cbb_chu.SelectedIndexChanged += new System.EventHandler(this.cbb_chu_SelectedIndexChanged);
 			// 
 			// label11
 			// 
@@ -502,6 +505,7 @@ namespace DATN_Phuong.Forms
 			this.Controls.Add(this.groupBox1);
 			this.Name = "CCVatLieu";
 			this.Text = "CCVatLieu";
+			this.Load += new System.EventHandler(this.CCVatLieu_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.groupBox2.ResumeLayout(false);

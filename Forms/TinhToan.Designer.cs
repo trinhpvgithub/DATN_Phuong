@@ -140,7 +140,7 @@ namespace DATN_Phuong.Forms
 			this.Column1.MinimumWidth = 6;
 			this.Column1.Name = "Column1";
 			this.Column1.ReadOnly = true;
-			this.Column1.Width = 20;
+			this.Column1.Width = 30;
 			// 
 			// Column2
 			// 
