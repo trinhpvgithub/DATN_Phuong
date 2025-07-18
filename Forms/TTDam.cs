@@ -16,5 +16,26 @@ namespace DATN_Phuong.Forms
 		{
 			InitializeComponent();
 		}
-	}
+
+        private void btn_openpath_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Title = "Chọn file Excel";
+                ofd.Filter = "Excel Files (*.xlsx)|*.xlsx";
+                ofd.Multiselect = false;
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = ofd.FileName;
+                    txt_path.Text = filePath;
+                }
+            }
+        }
+
+        private void btn_loaddata_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
