@@ -26,7 +26,6 @@ namespace DATN_Phuong.Forms
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 ofd.Title = "Chọn file Excel";
-                ofd.Filter = "Excel Files (*.xlsx)|*.xlsx";
                 ofd.Multiselect = false;
 
                 if (ofd.ShowDialog() == DialogResult.OK)
@@ -43,7 +42,7 @@ namespace DATN_Phuong.Forms
             {
                 FillMergedCells = true
             };
-            var a = MiniExcel.Query(txt_path.Text, sheetName: "Dam", configuration: config);
+            var a = MiniExcel.Query(txt_path.Text, sheetName: "Dam", configuration: config);//đọc file ex
             var b = new XulyEx(a.ToList());
             var c = b.Dams;
             foreach (var item in c)
