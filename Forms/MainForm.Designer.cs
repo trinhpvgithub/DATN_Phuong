@@ -39,6 +39,7 @@ namespace DATN_Phuong.Forms
 			this.btn_Tinh = new System.Windows.Forms.Button();
 			this.btn_VatLieu = new System.Windows.Forms.Button();
 			this.btn_ThongTin = new System.Windows.Forms.Button();
+			this.btn_Chitiet = new System.Windows.Forms.Button();
 			this.pl_Title.SuspendLayout();
 			this.pl_Name.SuspendLayout();
 			this.pl_Tab.SuspendLayout();
@@ -111,6 +112,7 @@ namespace DATN_Phuong.Forms
 			// 
 			this.pl_Tab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.pl_Tab.BackColor = System.Drawing.Color.DarkSlateGray;
+			this.pl_Tab.Controls.Add(this.btn_Chitiet);
 			this.pl_Tab.Controls.Add(this.btn_Tinh);
 			this.pl_Tab.Controls.Add(this.btn_VatLieu);
 			this.pl_Tab.Controls.Add(this.btn_ThongTin);
@@ -156,6 +158,18 @@ namespace DATN_Phuong.Forms
 			this.btn_ThongTin.UseVisualStyleBackColor = false;
 			this.btn_ThongTin.Click += new System.EventHandler(this.btn_ThongTin_Click);
 			// 
+			// btn_Chitiet
+			// 
+			this.btn_Chitiet.BackColor = System.Drawing.Color.Orange;
+			this.btn_Chitiet.Location = new System.Drawing.Point(10, 235);
+			this.btn_Chitiet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+			this.btn_Chitiet.Name = "btn_Chitiet";
+			this.btn_Chitiet.Size = new System.Drawing.Size(277, 68);
+			this.btn_Chitiet.TabIndex = 0;
+			this.btn_Chitiet.Text = "Chi Tiết";
+			this.btn_Chitiet.UseVisualStyleBackColor = false;
+			this.btn_Chitiet.Click += new System.EventHandler(this.btn_Chitiet_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -191,5 +205,6 @@ namespace DATN_Phuong.Forms
 		private System.Windows.Forms.Button btn_Tinh;
 		private System.Windows.Forms.Button btn_VatLieu;
 		private System.Windows.Forms.Button btn_ThongTin;
+		private System.Windows.Forms.Button btn_Chitiet;
 	}
 }

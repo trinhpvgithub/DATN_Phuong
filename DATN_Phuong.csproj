@@ -69,6 +69,12 @@
     <Compile Include="Forms\CCVatLieu.Designer.cs">
       <DependentUpon>CCVatLieu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ChiTiet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChiTiet.Designer.cs">
+      <DependentUpon>ChiTiet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CCVatLieu.resx">
       <DependentUpon>CCVatLieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChiTiet.resx">
+      <DependentUpon>ChiTiet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

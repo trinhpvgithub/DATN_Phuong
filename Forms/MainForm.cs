@@ -16,6 +16,7 @@ namespace DATN_Phuong.Forms
 		public static TinhToan formTT { get; set; }
 		public static CCVatLieu fromVL { get; set; }
 		public static TTDam fromTTDam { get; set; }
+		public static ChiTiet fromChiTiet { get; set; }
 		public MainForm()
 		{
 			InitializeComponent();
@@ -59,6 +60,15 @@ namespace DATN_Phuong.Forms
 				formTT = new TinhToan();
 			}
 			OpenChildForm(formTT, sender);
+		}
+
+		private void btn_Chitiet_Click(object sender, EventArgs e)
+		{
+			if (fromChiTiet == null)
+			{
+				fromChiTiet = new ChiTiet();
+			}
+			OpenChildForm(fromChiTiet, sender);
 		}
 	}
 }
