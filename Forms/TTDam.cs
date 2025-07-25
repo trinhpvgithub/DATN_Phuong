@@ -20,7 +20,7 @@ namespace DATN_Phuong.Forms
 		{
 			InitializeComponent();
 		}
-
+        public static List<Dam> Dams { get; set; } = new List<Dam>();
         private void btn_openpath_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -46,11 +46,15 @@ namespace DATN_Phuong.Forms
             var a = MiniExcel.Query(txt_path.Text, sheetName: "Dam", configuration: config);
             var b = new XulyEx(a.ToList());
             var c = b.Dams;
+            int i = 1;
+            string damnho = "300x400";
+            string damlon = "300x700";
             foreach (var item in c)
             {
+                string tendam = i % 3 == 1 ? damnho : damlon;
                 string[] row = new string[]
-                {   "0",
-                    "0",
+                {   i.ToString(),
+                    tendam,
                     item.MCA.M.ToString(),
                     item.MCA.Q.ToString(),
                     item.MCB.M.ToString(),
@@ -59,7 +63,12 @@ namespace DATN_Phuong.Forms
                     item.MCC.Q.ToString()
                 };
                 dgv_frames.Rows.Add(row);
+                item.Width = 300;
+                item.Name = tendam;
+                item.Height = i % 3 == 1 ? 400 : 700;
+                Dams.Add(item);
             }
+            
         }
     }
 }

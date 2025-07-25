@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DATN_Phuong.ClassUtils
 {
-	public class TinhToan
+	public class Tinh
 	{
 		public double h { get; set; }
 		public double a { get; set; }
@@ -22,7 +22,7 @@ namespace DATN_Phuong.ClassUtils
 		public double AsA { get; set; }
 		public double AsB { get; set; }
 		public double AsC { get; set; }
-		public TinhToan(double height, double cover, double hs, double width, double length, double Rbb, double Rss, double Maa, double Mbb, double Mcc)
+		public Tinh(double height, double cover, double hs, double width, double length, double Rbb, double Rss, double Maa, double Mbb, double Mcc)
 		{
 			h = height;
 			a = cover;
