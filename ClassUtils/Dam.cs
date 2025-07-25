@@ -24,17 +24,17 @@ namespace DATN_Phuong.ClassUtils
             Name = Convert.ToString(b.Select(x => x?.F).First());
             var sectionA = b.Where(x =>
             {
-                string s = Convert.ToString(x.G);
+                string s = Convert.ToString(x.B);
                 return s.Equals("0");
             });
             var sectionB = b.Where(x =>
             {
-                string s = Convert.ToString(x.G);
+                string s = Convert.ToString(x.B);
                 return s.Equals("0.5L");
             });
             var sectionC = b.Where(x =>
             {
-                string s = Convert.ToString(x.G);
+                string s = Convert.ToString(x.B);
                 return s.Equals("1L");
             });
             MCA = new MatCat(sectionA.ToList());
