@@ -25,12 +25,13 @@ namespace DATN_Phuong.Forms
             var beams = TTDam.Dams;
             var BT = CCVatLieu.MACBT;
             var THEP = CCVatLieu.MACTHEPCHINH;
+            int i = 1;
             foreach (var beam in beams)
             {
                 var Result = new Tinh(beam.Height, a, hf, beam.Width, 8, BT.Rb, THEP.Rs, beam.MCA.M, beam.MCB.M, beam.MCC.M);
                 string[] beamresult = new string[]
                 {
-                    beam.Story,
+                    i.ToString(),
                     beam.Name,
                     Math.Round( Result.AsA,4).ToString(),
                     Math.Round( Result.AsB,4).ToString(),
@@ -38,6 +39,7 @@ namespace DATN_Phuong.Forms
                 };
                 dgv_result.Rows.Add(beamresult);
                 Dams.Add(beamresult);
+                i++;
             }
         }
     }

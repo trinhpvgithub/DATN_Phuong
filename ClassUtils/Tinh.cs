@@ -31,9 +31,9 @@ namespace DATN_Phuong.ClassUtils
 			L = length;
 			Rb = Rbb;
 			Rs = Rss;
-			Ma = Maa * 10000;
-			Mb = Mbb * 10000;
-			Mc = Mcc * 10000;
+			Ma = Maa * 1000000;
+			Mb = Mbb * 1000000;
+			Mc = Mcc * 1000000;
 			Run();
 		}
 		private void Run()
