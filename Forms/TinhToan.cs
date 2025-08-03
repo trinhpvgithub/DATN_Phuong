@@ -18,6 +18,7 @@ namespace DATN_Phuong.Forms
 			InitializeComponent();
 		}
         public static List<string[]> Dams { get; set; } = new List<string[]>();
+        public static List<Tinh> Ketqua { get; set; } = new List<Tinh>();
         private void btn_Tinh_Click(object sender, EventArgs e)
         {
             var a = Convert.ToDouble(txt_a.Text);
@@ -28,8 +29,12 @@ namespace DATN_Phuong.Forms
             int i = 1;
             foreach (var beam in beams)
             {
-                var Result = new Tinh(beam.Height, a, hf, beam.Width, 8, BT.Rb, THEP.Rs, beam.MCA.M, beam.MCB.M, beam.MCC.M);
-                string[] beamresult = new string[]
+                var Result = new Tinh(beam.Height, a, hf, beam.Width, 8, BT.Rb, THEP.Rs, beam.MCA.M, beam.MCB.M, beam.MCC.M)
+                {
+                    Id = i
+				};
+                Ketqua.Add(Result);
+				string[] beamresult = new string[]
                 {
                     i.ToString(),
                     beam.Name,

@@ -32,7 +32,7 @@ namespace DATN_Phuong.ClassUtils
                 {
                     M = -mmax.Max(x => Math.Abs(x));
                 }
-                else M = -mmax.Max(x => Math.Abs(x));
+                else M = mmax.Max(x => Math.Abs(x));
             }
             if (qmax.Count > 0)
                 Q = qmax.Max(x => Math.Abs(x));

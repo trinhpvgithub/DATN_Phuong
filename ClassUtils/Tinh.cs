@@ -8,6 +8,7 @@ namespace DATN_Phuong.ClassUtils
 {
 	public class Tinh
 	{
+		public int Id { get; set; }
 		public double h { get; set; }
 		public double a { get; set; }
 		public double hf { get; set; }
@@ -22,6 +23,8 @@ namespace DATN_Phuong.ClassUtils
 		public double AsA { get; set; }
 		public double AsB { get; set; }
 		public double AsC { get; set; }
+		public List<double> Am { get; set; } = new List<double>();
+		public List<double> zeta { get; set; } = new List<double>();
 		public Tinh(double height, double cover, double hs, double width, double length, double Rbb, double Rss, double Maa, double Mbb, double Mcc)
 		{
 			h = height;
@@ -46,7 +49,9 @@ namespace DATN_Phuong.ClassUtils
 				double As = 0;
 				if (M < 0)
 				{
-					As = DienTichThepTietDienChuNhat(M);
+					As = DienTichThepTietDienChuNhat(M, out var am, out var z);
+					Am.Add(am);
+					zeta.Add(z);
 				}
 				else
 				{
@@ -54,18 +59,22 @@ namespace DATN_Phuong.ClassUtils
 
 					if (M < TinhHeSo.Mf(Rb, bf, hf, h0))
 					{
-						As = DienTichThepTietDienChuNhat(M);
+						As = DienTichThepTietDienChuNhat(M, out var am, out var z);
+						Am.Add(am);
+						zeta.Add(z);
 					}
 					else
 					{
-						As = DienTichThepTietDienChuT(M);
+						As = DienTichThepTietDienChuT(M, out var am, out var z);
+						Am.Add(am);
+						zeta.Add(z);
 					}
 				}
 				Ass.Add(As);
 			}
-			AsA = Ass[0] / 100;
-			AsB = Ass[1] / 100;
-			AsC = Ass[2] / 100;
+			AsA = Math.Round(Ass[0] / 100, 4);
+			AsB = Math.Round(Ass[1] / 100, 4);
+			AsC = Math.Round(Ass[2] / 100, 4);
 		}
 		private double DoVuonCanh()
 		{
@@ -98,21 +107,23 @@ namespace DATN_Phuong.ClassUtils
 			}
 		}
 
-		private double DienTichThepTietDienChuNhat(double M)
+		private double DienTichThepTietDienChuNhat(double M, out double am, out double zeta)
 		{
 			double h0 = h - a;
 
-			var am = Math.Abs(M) / (Rb * b * h0 * h0);
+			am = Math.Abs(M) / (Rb * b * h0 * h0);
 
-			double zeta = (1 + Math.Sqrt(1 - 2 * am)) / 2;
+			zeta = (1 + Math.Sqrt(1 - 2 * am)) / 2;
 
 			return Math.Abs(M) / (Rs * zeta * h0);
 		}
-		private double DienTichThepTietDienChuT(double M)
+		private double DienTichThepTietDienChuT(double M, out double am, out double zeta)
 		{
 			double h0 = h - a;
 
-			var am = (Math.Abs(M) - Rb * (bf - b) * hf * (h0 - 0.5 * hf)) / (Rb * b * h0 * h0);
+			am = (Math.Abs(M) - Rb * (bf - b) * hf * (h0 - 0.5 * hf)) / (Rb * b * h0 * h0);
+
+			zeta = 0;
 
 			double E = TinhHeSo.Esp(am);
 

@@ -50,7 +50,7 @@ namespace DATN_Phuong.Forms
 			string damlon = "300x700";
 			foreach (var item in c)
 			{
-				string tendam = i % 3 == 1 ? damnho : damlon;
+				string tendam = i % 3 == 2 ? damnho : damlon;
 				string[] row = new string[]
 				{   i.ToString(),
 					tendam,
@@ -64,7 +64,7 @@ namespace DATN_Phuong.Forms
 				dgv_frames.Rows.Add(row);
 				item.Width = 300;
 				item.Name = tendam;
-				item.Height = i % 3 == 1 ? 400 : 700;
+				item.Height = i % 3 == 2 ? 400 : 700;
 				Dams.Add(item);
 				i++;
 			}
