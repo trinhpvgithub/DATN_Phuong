@@ -21,11 +21,23 @@ namespace DATN_Phuong.Forms
 		{
 			cbb_chitet.Items.Clear();
 			cbb_chitet.Items.AddRange(TinhToan.Ketqua.Select(x => (object)x.Id).ToArray());
-			cbb_chitet.SelectedIndex = 0;
+			if (cbb_chitet.Items.Count > 0)
+			{
+				cbb_chitet.SelectedIndex = 0; // chọn mục đầu tiên
+			}
+			else
+			{
+				MessageBox.Show("Không có kết quả tính toán nào để hiển thị!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
 		}
 
 		private void cbb_chitet_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			// sử dụng kết quả tính toán đã lưu để đưa lên màn hình
+			if(cbb_chitet.SelectedItem == null)
+			{
+				return; // không có mục nào được chọn
+			}
 			var tt = TinhToan.Ketqua.Where(x => x.Id == Convert.ToInt32(cbb_chitet.SelectedItem)).FirstOrDefault();
 			lb_Rb.Text = tt.Rb.ToString() ;
 			lb_Rs.Text = tt.Rs.ToString();
@@ -43,6 +55,99 @@ namespace DATN_Phuong.Forms
 			lb_ma.Text = tt.Ma.ToString();
 			lb_mb.Text = tt.Mb.ToString();
 			lb_mc.Text = tt.Mc.ToString();
+			var thepA = ClassUtils.RebarCombo.GetMixedRebarOptions_WithMin2Phi12(tt.AsA, maxResults: Convert.ToInt32(cbb_soluachonA.Text));
+			if (thepA.Count > 0)
+			{
+				lst_chonA.Items.Clear(); // xóa các mục cũ trước khi thêm mới
+				foreach (var item in thepA)
+				{
+					lst_chonA.Items.Add(item.ToString());
+				}
+			}
+			else
+			{
+				lst_chonA.Items.Add("Không có lựa chọn nào phù hợp, vui lòng chọn lại Vật liệu!");
+			}
+			var thepB = ClassUtils.RebarCombo.GetMixedRebarOptions_WithMin2Phi12(tt.AsB);
+			if (thepB.Count > 0)
+			{
+				lst_chonB.Items.Clear(); // xóa các mục cũ trước khi thêm mới
+				foreach (var item in thepB)
+				{
+					lst_chonB.Items.Add(item.ToString());
+				}
+			}
+			else
+			{
+				lst_chonB.Items.Add("Không có lựa chọn nào phù hợp, vui lòng chọn lại Vật liệu!");
+			}
+			var thepC = ClassUtils.RebarCombo.GetMixedRebarOptions_WithMin2Phi12(tt.AsC);
+			if (thepC.Count > 0)
+			{
+				lst_chonC.Items.Clear();
+				foreach (var item in thepC)
+				{
+					lst_chonC.Items.Add(item.ToString());
+				}
+			}
+			else
+			{
+				lst_chonC.Items.Add("Không có lựa chọn nào phù hợp, vui lòng chọn lại Vật liệu!");
+			}
+		}
+
+		private void cbb_soluachonA_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			var tt = TinhToan.Ketqua.FirstOrDefault(x => x.Id == Convert.ToInt32(cbb_chitet.SelectedItem));
+			var thepA = ClassUtils.RebarCombo.GetMixedRebarOptions_WithMin2Phi12(tt.AsA, maxResults: Convert.ToInt32(cbb_soluachonA.Text));
+			if (thepA.Count > 0)
+			{
+				lst_chonA.Items.Clear(); // xóa các mục cũ trước khi thêm mới
+				foreach (var item in thepA)
+				{
+					lst_chonA.Items.Add(item.ToString());
+				}
+			}
+			else
+			{
+				lst_chonA.Items.Add("Không có lựa chọn nào phù hợp, vui lòng chọn lại Vật liệu!");
+			}
+		}
+
+		private void cbb_soluachonB_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			var tt = TinhToan.Ketqua.FirstOrDefault(x => x.Id == Convert.ToInt32(cbb_chitet.SelectedItem));
+			var thepB = ClassUtils.RebarCombo.GetMixedRebarOptions_WithMin2Phi12(tt.AsB);
+			if (thepB.Count > 0)
+			{
+				lst_chonB.Items.Clear(); // xóa các mục cũ trước khi thêm mới
+				foreach (var item in thepB)
+				{
+					lst_chonB.Items.Add(item.ToString());
+				}
+			}
+			else
+			{
+				lst_chonB.Items.Add("Không có lựa chọn nào phù hợp, vui lòng chọn lại Vật liệu!");
+			}
+		}
+
+		private void cbb_soluachonC_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			var tt = TinhToan.Ketqua.FirstOrDefault(x => x.Id == Convert.ToInt32(cbb_chitet.SelectedItem));
+			var thepC = ClassUtils.RebarCombo.GetMixedRebarOptions_WithMin2Phi12(tt.AsC);
+			if (thepC.Count > 0)
+			{
+				lst_chonC.Items.Clear();
+				foreach (var item in thepC)
+				{
+					lst_chonC.Items.Add(item.ToString());
+				}
+			}
+			else
+			{
+				lst_chonC.Items.Add("Không có lựa chọn nào phù hợp, vui lòng chọn lại Vật liệu!");
+			}
 		}
 	}
 }

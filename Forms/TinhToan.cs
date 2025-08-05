@@ -18,8 +18,8 @@ namespace DATN_Phuong.Forms
 			InitializeComponent();
 		}
         public static List<string[]> Dams { get; set; } = new List<string[]>();
-        public static List<Tinh> Ketqua { get; set; } = new List<Tinh>();
-        private void btn_Tinh_Click(object sender, EventArgs e)
+        public static List<Tinh> Ketqua { get; set; } = new List<Tinh>(); // lưu kết qủa tính toán
+		private void btn_Tinh_Click(object sender, EventArgs e)
         {
             var a = Convert.ToDouble(txt_a.Text);
             var hf = Convert.ToDouble(txt_hf.Text);

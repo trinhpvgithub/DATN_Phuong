@@ -55,6 +55,7 @@
     <Compile Include="ClassUtils\MACBT.cs" />
     <Compile Include="ClassUtils\MACTHEP.cs" />
     <Compile Include="ClassUtils\MatCat.cs" />
+    <Compile Include="ClassUtils\RebarCombo.cs" />
     <Compile Include="ClassUtils\Tinh.cs" />
     <Compile Include="ClassUtils\XulyEx.cs" />
     <Compile Include="Form1.cs">
