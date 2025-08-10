@@ -16,7 +16,7 @@ namespace DATN_Phuong.Forms
 		{
 			InitializeComponent();
 		}
-
+		private int _selectedIndex = -1; // Biến để lưu chỉ mục được chọn
 		private void ChiTiet_Load(object sender, EventArgs e)
 		{
 			cbb_chitet.Items.Clear();
@@ -33,8 +33,9 @@ namespace DATN_Phuong.Forms
 
 		private void cbb_chitet_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			_selectedIndex = cbb_chitet.SelectedIndex; // lưu chỉ mục được chọn
 			// sử dụng kết quả tính toán đã lưu để đưa lên màn hình
-			if(cbb_chitet.SelectedItem == null)
+			if (cbb_chitet.SelectedItem == null)
 			{
 				return; // không có mục nào được chọn
 			}
@@ -98,7 +99,7 @@ namespace DATN_Phuong.Forms
 
 		private void cbb_soluachonA_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			var tt = TinhToan.Ketqua.FirstOrDefault(x => x.Id == Convert.ToInt32(cbb_chitet.SelectedItem));
+			var tt = TinhToan.Ketqua.FirstOrDefault(x => x.Id == _selectedIndex);
 			var thepA = ClassUtils.RebarCombo.GetMixedRebarOptions_WithMin2Phi12(tt.AsA, maxResults: Convert.ToInt32(cbb_soluachonA.Text));
 			if (thepA.Count > 0)
 			{
@@ -116,8 +117,8 @@ namespace DATN_Phuong.Forms
 
 		private void cbb_soluachonB_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			var tt = TinhToan.Ketqua.FirstOrDefault(x => x.Id == Convert.ToInt32(cbb_chitet.SelectedItem));
-			var thepB = ClassUtils.RebarCombo.GetMixedRebarOptions_WithMin2Phi12(tt.AsB);
+			var tt = TinhToan.Ketqua.FirstOrDefault(x => x.Id == _selectedIndex);
+			var thepB = ClassUtils.RebarCombo.GetMixedRebarOptions_WithMin2Phi12(tt.AsB, maxResults: Convert.ToInt32(cbb_soluachonB.Text));
 			if (thepB.Count > 0)
 			{
 				lst_chonB.Items.Clear(); // xóa các mục cũ trước khi thêm mới
@@ -134,8 +135,8 @@ namespace DATN_Phuong.Forms
 
 		private void cbb_soluachonC_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			var tt = TinhToan.Ketqua.FirstOrDefault(x => x.Id == Convert.ToInt32(cbb_chitet.SelectedItem));
-			var thepC = ClassUtils.RebarCombo.GetMixedRebarOptions_WithMin2Phi12(tt.AsC);
+			var tt = TinhToan.Ketqua.FirstOrDefault(x => x.Id == _selectedIndex);
+			var thepC = ClassUtils.RebarCombo.GetMixedRebarOptions_WithMin2Phi12(tt.AsC, maxResults: Convert.ToInt32(cbb_soluachonC.Text));
 			if (thepC.Count > 0)
 			{
 				lst_chonC.Items.Clear();

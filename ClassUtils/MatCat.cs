@@ -14,18 +14,19 @@ namespace DATN_Phuong.ClassUtils
         {
             var m = s.FirstOrDefault(x =>
             {
-                var mm = Convert.ToString(x.C);
+                var mm = Convert.ToString(x.D);
                 if (mm == null) return false;
                 return mm.StartsWith("M");
             });
             var q = s.FirstOrDefault(x =>
             {
-                var mm = Convert.ToString(x.C);
+                var mm = Convert.ToString(x.D);
                 if (mm == null) return false;
                 return mm.StartsWith("Q");
             });
-            List<double> mmax = GetValue(m);
-            List<double> qmax = GetValue(q);
+            if (m == null) return;
+            if (q == null) return;
+			List<double> mmax = GetValue(m);
             if (mmax.Count > 0)
             {
                 if (c)
@@ -34,14 +35,13 @@ namespace DATN_Phuong.ClassUtils
                 }
                 else M = mmax.Max(x => Math.Abs(x));
             }
+            List<double> qmax = GetValue(q);
             if (qmax.Count > 0)
                 Q = qmax.Max(x => Math.Abs(x));
         }
         public List<double> GetValue(dynamic dy)// lấy giá trị của mặt cắt
         {
             var result = new List<double>();
-            if (Convert.ToString(dy.J) != "-" && dy.J != null)
-                result.Add(dy.J);
             if (Convert.ToString(dy.K) != "-" && dy.K != null)
                 result.Add(dy.K);
             if (Convert.ToString(dy.L) != "-" && dy.L != null)
@@ -52,6 +52,8 @@ namespace DATN_Phuong.ClassUtils
                 result.Add(dy.N);
             if (Convert.ToString(dy.O) != "-" && dy.O != null)
                 result.Add(dy.O);
+            if (Convert.ToString(dy.P) != "-" && dy.P != null)
+                result.Add(dy.P);
             return result;
         }
     }

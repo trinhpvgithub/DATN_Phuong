@@ -20,21 +20,20 @@ namespace DATN_Phuong.ClassUtils
 
         public Dam( IGrouping<dynamic,dynamic> b)
         {
-            Story = Convert.ToString(b.Select(x => x?.E).First());
-            Name = Convert.ToString(b.Select(x => x?.F).First());
+            Name = Convert.ToString(b.Select(x => x?.B).First());
             var sectionA = b.Where(x =>
             {
-                string s = Convert.ToString(x.B);
+                string s = Convert.ToString(x.C);
                 return s.Equals("0");
             });
             var sectionB = b.Where(x =>
             {
-                string s = Convert.ToString(x.B);
+                string s = Convert.ToString(x.C);
                 return s.Equals("0.5L");
             });
             var sectionC = b.Where(x =>
             {
-                string s = Convert.ToString(x.B);
+                string s = Convert.ToString(x.C);
                 return s.Equals("1L");
             });
             MCA = new MatCat(sectionA.ToList());

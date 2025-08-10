@@ -38,6 +38,8 @@ namespace DATN_Phuong.Forms
 
 		private void btn_loaddata_Click(object sender, EventArgs e)
 		{
+			var tt = MiniExcel.Query<TietDien>(txt_pathTD.Text);
+			var data = tt.Where(x => x.Label.StartsWith("B")).GroupBy(x => x.Label).ToList();
 			var config = new OpenXmlConfiguration()
 			{
 				FillMergedCells = true
@@ -46,14 +48,11 @@ namespace DATN_Phuong.Forms
 			var b = new XulyEx(a.ToList());
 			var c = b.Dams;
 			int i = 1;
-			string damnho = "300x400";
-			string damlon = "300x700";
 			foreach (var item in c)
 			{
-				string tendam = i % 3 == 2 ? damnho : damlon;
 				string[] row = new string[]
 				{   i.ToString(),
-					tendam,
+					item.Name,	
 					item.MCA.M.ToString(),
 					item.MCA.Q.ToString(),
 					item.MCB.M.ToString(),
@@ -63,12 +62,26 @@ namespace DATN_Phuong.Forms
 				};
 				dgv_frames.Rows.Add(row);
 				item.Width = 300;
-				item.Name = tendam;
 				item.Height = i % 3 == 2 ? 400 : 700;
 				Dams.Add(item);
 				i++;
 			}
 
+		}
+
+		private void btn_pathTD_Click(object sender, EventArgs e)
+		{
+			using (OpenFileDialog ofd = new OpenFileDialog())
+			{
+				ofd.Title = "Chọn file Excel";
+				ofd.Multiselect = false;
+
+				if (ofd.ShowDialog() == DialogResult.OK)
+				{
+					string filePath = ofd.FileName;
+					txt_pathTD.Text = filePath;
+				}
+			}
 		}
 	}
 }
